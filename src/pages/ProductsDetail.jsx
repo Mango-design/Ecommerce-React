@@ -8,7 +8,9 @@ const ProductsDetail = () => {
 
     const {id} = useParams();
     const [product, setProduct] = useState({});
-    const productList =useSelector(state => state.products)
+    const productSuggested =useSelector(state => state.products)
+
+    
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -24,8 +26,8 @@ const ProductsDetail = () => {
         <div>
             <h1>{product.title}</h1>
             {
-                productList.map(productItem=>(
-                    <li key={productItem.id} onClick={() =>navigate(`products/${productItem.id}`)}>
+                productSuggested.map((productItem) => (
+                    <li key={productItem.id} onClick = {() => navigate(`products/${productItem.id}`)}>
                         {productItem.title}
                     </li>
                 ))
